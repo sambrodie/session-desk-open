@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><meta name="robots" content="noindex">
+<title>Open in Claude</title>
+<style>body{font:15px system-ui,sans-serif;background:#16181d;color:#e6e8eb;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0}
+main{text-align:center;max-width:420px;padding:16px}a.b{display:inline-block;margin-top:14px;padding:10px 18px;border-radius:8px;background:#d97757;color:#fff;text-decoration:none;font-weight:600}p{color:#aab2bf}</style></head>
+<body><main><h1 style="font-size:18px">Opening the session in Claude…</h1><p id="m">If nothing happens, click the button.</p><a class="b" id="go" href="#">Open in Claude</a></main>
+<script>
+// Session Desk bounce page: forwards ?s=<session id> to the Claude app. Only local_ ids, only claude://.
+var s = new URLSearchParams(location.search).get("s") || "";
+if (/^local_[0-9a-f-]{8,64}$/.test(s)) {
+  var url = "claude://claude.ai/epitaxy/" + s;
+  document.getElementById("go").href = url;
+  location.replace(url);
+} else {
+  document.getElementById("m").textContent = "This link has no valid session id.";
+  document.getElementById("go").remove();
+}
+</script></body></html>
